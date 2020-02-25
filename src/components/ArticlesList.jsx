@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { getArticles } from "../api.js";
+import * as Api from "../api.js";
 import ArticleCard from "./ArticleCard";
 import { Router } from "@reach/router";
 import ArticleView from "./ArticleView";
+import Loading from "./Loading";
 
 class ArticlesList extends Component {
   state = { articles: [], isLoading: true };
@@ -11,17 +12,23 @@ class ArticlesList extends Component {
     this.fetchArticles();
   }
   render() {
-    const { articles } = this.state;
+    const { articles, isLoading } = this.state;
     return (
       <>
-        <div className="container">
-          <h1>Articles</h1>
-          <ul>
-            {articles.map(article => {
-              return <ArticleCard article={article} key={article.article_id} />;
-            })}
-          </ul>
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="container">
+            <h1>Articles</h1>
+            <ul>
+              {articles.map(article => {
+                return (
+                  <ArticleCard article={article} key={article.article_id} />
+                );
+              })}
+            </ul>
+          </div>
+        )}
         <Router>
           <ArticleView path=":article_id" />
         </Router>
@@ -30,8 +37,8 @@ class ArticlesList extends Component {
   }
 
   fetchArticles = () => {
-    getArticles().then(articles => {
-      this.setState({ articles });
+    Api.getArticles().then(articles => {
+      this.setState({ articles, isLoading: false });
     });
   };
 }

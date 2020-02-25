@@ -19,3 +19,9 @@ export const getTopics = async () => {
   const { data } = await apiRequest.get(`topics`);
   return data.topics;
 };
+
+export const getArticleComments = async article_id => {
+  const { data } = await apiRequest.get(`/articles/${article_id}/comments`);
+  console.log(data);
+  return data.comments;
+};
