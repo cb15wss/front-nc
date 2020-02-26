@@ -1,17 +1,20 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const TopicCard = props => {
-  console.log("Topic card props", props.topics);
   const topics = props.topics;
   return (
     <>
       <div className="card mb-4">
-        <div className="card-header">Topics</div>
+        <div className="card-header">
+          <h2>Topics</h2>
+        </div>
         <ul className="list-group list-group-flush">
           {topics.map(topic => {
             return (
               <li key={topic.slug} className="list-group-item">
-                {topic.slug}
+                <h3>{topic.slug}</h3> <p>Desciption: {topic.description}</p>
+                <Link to={`/articles`}>Articles →</Link>
               </li>
             );
           })}

@@ -9,6 +9,7 @@ import ArticlesList from "../src/components/ArticlesList";
 import Home from "./components/Home";
 import TopicsList from "./components/TopicsList";
 import ArticleView from "./components/ArticleView";
+import UsersList from "./components/UsersList";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <ArticlesList path="/articles" />
         <ArticleView path="/articles/:article_id" />
         <TopicsList path="/topics" />
+        <UsersList path="/users" />
       </Router>
     </main>
   );

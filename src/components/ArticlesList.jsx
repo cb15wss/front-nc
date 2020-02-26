@@ -4,22 +4,31 @@ import ArticleCard from "./ArticleCard";
 import { Router } from "@reach/router";
 import ArticleView from "./ArticleView";
 import Loading from "./Loading";
+//import SortDropdown from "./SortDropdown.jsx";
+//import Select from "react-dropdown-select";
 
 class ArticlesList extends Component {
-  state = { articles: [], isLoading: true };
+  state = {
+    articles: [],
+    isLoading: true,
+    category: undefined,
+    filter: undefined,
+    sort_by: undefined
+  };
 
   componentDidMount() {
     this.fetchArticles();
   }
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, sort_by } = this.state;
     return (
       <>
+        {console.log("articles params", articles)}
         {isLoading ? (
           <Loading />
         ) : (
           <div className="container">
-            <h1>Articles</h1>
+            <h2>Articles</h2>
             <ul>
               {articles.map(article => {
                 return (

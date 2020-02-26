@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const CommentCard = ({ comment }) => {
-  console.log("Comment Card comment", comment);
   const { author, created_at, body, comment_id, votes } = comment;
   return (
     <>

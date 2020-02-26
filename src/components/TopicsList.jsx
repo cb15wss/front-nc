@@ -7,10 +7,12 @@ class TopicsList extends Component {
     topics: [],
     isLoading: true
   };
+
   render() {
+    //console.log("topics props", this.props);
     const { topics } = this.state;
 
-    console.log(topics);
+    //console.log(topics);
 
     return (
       <>
@@ -26,7 +28,7 @@ class TopicsList extends Component {
 
   fetchTopics = () => {
     getTopics().then(topics => {
-      console.log("fetch topics", topics);
+      //console.log("fetch topics", topics);
       this.setState({ topics });
     });
   };
