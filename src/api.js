@@ -3,9 +3,9 @@ const apiRequest = axios.create({
   baseURL: "https://xtine-news.herokuapp.com/api"
 });
 
-export const getArticles = async (searchTerm, filterTerm) => {
+export const getArticles = async (sortValue, topicValue, authorValue) => {
   const { data } = await apiRequest.get(`/articles`, {
-    params: { topic: searchTerm, sort_by: filterTerm }
+    params: { topic: topicValue, sort_by: sortValue }
   });
   return data.articles;
 };
@@ -39,4 +39,12 @@ export const getArticlesByTopic = async topic => {
     params: { topic: { topic } }
   });
   return data.articles;
+};
+
+export const insertComment = async (article_id, comment) => {
+  const { data } = await apiRequest.post(
+    `/articles/${article_id}/comments`,
+    comment
+  );
+  return data.comment;
 };

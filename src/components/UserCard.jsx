@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const UserCard = props => {
-  console.log("users props", props);
   const { username, avatar_url, name } = props.user;
   return (
     <>

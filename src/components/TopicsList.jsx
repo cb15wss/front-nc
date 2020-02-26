@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getTopics } from "../api";
 import TopicCard from "./TopicCard";
+import Loading from "./Loading";
 
 class TopicsList extends Component {
   state = {
@@ -8,12 +9,15 @@ class TopicsList extends Component {
     isLoading: true
   };
 
+  componentDidMount() {
+    this.fetchTopics();
+  }
+
   render() {
     //console.log("topics props", this.props);
-    const { topics } = this.state;
-
+    const { topics, isLoading } = this.state;
     //console.log(topics);
-
+    if (isLoading) return <Loading />;
     return (
       <>
         <div className="container">
@@ -22,14 +26,11 @@ class TopicsList extends Component {
       </>
     );
   }
-  componentDidMount() {
-    this.fetchTopics();
-  }
 
   fetchTopics = () => {
     getTopics().then(topics => {
       //console.log("fetch topics", topics);
-      this.setState({ topics });
+      this.setState({ topics, isLoading: false });
     });
   };
 }

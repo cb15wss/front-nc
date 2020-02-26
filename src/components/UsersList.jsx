@@ -18,7 +18,6 @@ class UsersList extends Component {
     return (
       <>
         <div className="container">
-          {console.log("users", users)}
           <h1>Users</h1>
           <ul>
             {users.map(user => {
