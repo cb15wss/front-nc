@@ -23,7 +23,8 @@ class App extends React.Component {
         <Router>
           <Home path="/" />
           <ArticlesList path="/articles" />
-          <ArticleView path="/articles/:article_id" />
+          <ArticleView path="/articles/:article_id" user="username" />
+          <ArticlesList path="/articles/topic/:topic" />
           <TopicsList path="/topics" />
           <UsersList path="/users" />
         </Router>
@@ -32,3 +33,5 @@ class App extends React.Component {
   }
 }
 export default App;
+
+/*<ArticlesList path="/articles/topics/:topic" />*/

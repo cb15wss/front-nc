@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getTopics } from "../api";
+import * as Api from "../api";
 import TopicCard from "./TopicCard";
 import Loading from "./Loading";
 
@@ -14,7 +14,7 @@ class TopicsList extends Component {
   }
 
   render() {
-    //console.log("topics props", this.props);
+    //console.log("topic in topics list", this.props);
     const { topics, isLoading } = this.state;
     //console.log(topics);
     if (isLoading) return <Loading />;
@@ -28,7 +28,7 @@ class TopicsList extends Component {
   }
 
   fetchTopics = () => {
-    getTopics().then(topics => {
+    Api.getTopics().then(topics => {
       //console.log("fetch topics", topics);
       this.setState({ topics, isLoading: false });
     });

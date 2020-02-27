@@ -14,15 +14,14 @@ class ArticleView extends Component {
     this.fetchArticleWithComments();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.article_id !== this.props.article_id) {
-      this.fetchArticleWithComments();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.article_id !== this.props.article_id) {
+  //     this.fetchArticleWithComments();
+  //   }
+  // }
 
   render() {
     const {
-      article_id,
       title,
       body,
       topic,
@@ -31,6 +30,7 @@ class ArticleView extends Component {
       votes,
       created_at
     } = this.state.article;
+    const { article_id } = this.props;
     //{console.log("article view props", this.state.article)}
     return (
       <div className="container">
@@ -60,7 +60,9 @@ class ArticleView extends Component {
   }
 
   fetchArticleWithComments = () => {
-    getArticle(this.props.article_id)
+    const { article_id } = this.props;
+    console.log(article_id, "Article view");
+    getArticle(article_id)
       .then(article => {
         // console.log("article in fetch article", article);
         this.setState({ article, isLoading: false });

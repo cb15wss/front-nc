@@ -9,11 +9,11 @@ class CommentsList extends Component {
     this.fetchComments();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.article_id !== this.props.article_id) {
-      this.fetchComments();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.article_id !== this.props.article_id) {
+  //     this.fetchComments();
+  //   }
+  // }
 
   render() {
     // console.log(this.state.comments);
@@ -36,6 +36,7 @@ class CommentsList extends Component {
   }
 
   fetchComments = () => {
+    console.log(this.props.article_id, "<<<<<<");
     getArticleComments(this.props.article_id).then(comments => {
       this.setState({ comments });
     });

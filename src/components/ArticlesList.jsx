@@ -14,10 +14,22 @@ class ArticlesList extends Component {
     isLoading: true,
     searchTerm: "",
     filter: undefined,
-    category: undefined,
+    topic: undefined,
     sort_by: undefined,
     error: false,
     errorMessage: ""
+  };
+
+  fetchArticles = () => {
+    const { sort_by, filter } = this.state;
+    const { topic } = this.props;
+    Api.getArticles(sort_by, topic, filter)
+      .then(articles => {
+        this.setState({ articles, isLoading: false, error: false });
+      })
+      .catch(err => {
+        this.setState({ isLoading: false, error: true, errorMessage: err.msg });
+      });
   };
 
   componentDidMount() {
@@ -25,15 +37,17 @@ class ArticlesList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { sort_by, category, filter } = this.state;
-    const diffCategory = category !== prevState.category;
+    const { sort_by, topic, filter } = this.state;
+
+    const diffTopic = topic !== prevState.topic;
     const diffFilter = filter !== prevState.filter;
     const diffSort_by = sort_by !== prevState.sort_by;
-    if (diffCategory || diffFilter || diffSort_by) {
-      this.fetchArticles(sort_by, category, filter);
+    if (diffTopic || diffFilter || diffSort_by) {
+      this.fetchArticles();
     }
-  }
 
+    //  console.log("topic in articles list", this.props.topic);
+  }
   render() {
     const {
       articles,
@@ -81,25 +95,15 @@ class ArticlesList extends Component {
             path="/topics"
             setFilter={this.setFilter}
             filter={filter}
+            topic={this.props.topic}
           />
           <UsersList path="/users" setFilter={this.setFilter} filter={filter} />
-          <ErrorPage default />
         </Router>
       </>
     );
   }
   setFilter = (category, filter) => {
     this.setState({ category, filter, isLoading: true });
-  };
-
-  fetchArticles = (sort_by, category, filter) => {
-    Api.getArticles(sort_by, category, filter)
-      .then(articles => {
-        this.setState({ articles, isLoading: false, error: false });
-      })
-      .catch(err => {
-        this.setState({ isLoading: false, error: true, errorMessage: err.msg });
-      });
   };
 }
 
