@@ -31,7 +31,9 @@ class ArticleView extends Component {
       created_at
     } = this.state.article;
     const { article_id } = this.props;
-    //{console.log("article view props", this.state.article)}
+    {
+      console.log("article view props", this.props);
+    }
     return (
       <div className="container">
         <h1>Article ID:{article_id} </h1>
@@ -54,7 +56,8 @@ class ArticleView extends Component {
             Comments: {comment_count}
           </div>
         </div>
-        <CommentList article_id={article_id} />
+        <Link to={`/articles/${article_id}/comments`}>Add Comment</Link>
+        <CommentList article_id={article_id} username={this.props.username} />
       </div>
     );
   }
@@ -74,3 +77,11 @@ class ArticleView extends Component {
 }
 
 export default ArticleView;
+
+/*   <SubmitComment
+            article_id={article_id}
+            username={this.props.username}
+
+               <Link to={`/articles/${article_id}/comments`}>Add Comment</Link>
+        </div>
+          />*/

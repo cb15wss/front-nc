@@ -13,6 +13,7 @@ const ArticleCard = props => {
     body,
     created_at
   } = props.article;
+  console.log(article_id);
   return (
     <>
       <div className="card mb-4">

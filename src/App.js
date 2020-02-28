@@ -10,6 +10,8 @@ import TopicsList from "./components/TopicsList";
 import ArticleView from "./components/ArticleView";
 import UsersList from "./components/UsersList";
 
+import ErrorPage from "./components/ErrorPage";
+
 class App extends React.Component {
   state = {
     username: "jessjelly"
@@ -23,10 +25,12 @@ class App extends React.Component {
         <Router>
           <Home path="/" />
           <ArticlesList path="/articles" />
-          <ArticleView path="/articles/:article_id" user="username" />
+          <ArticleView path="/articles/:article_id" username={username} />
           <ArticlesList path="/articles/topic/:topic" />
           <TopicsList path="/topics" />
           <UsersList path="/users" />
+
+          <ErrorPage default />
         </Router>
       </main>
     );

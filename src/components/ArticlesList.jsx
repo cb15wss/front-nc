@@ -49,14 +49,7 @@ class ArticlesList extends Component {
     //  console.log("topic in articles list", this.props.topic);
   }
   render() {
-    const {
-      articles,
-      isLoading,
-      sort_by,
-      filter,
-      errorMessage,
-      error
-    } = this.state;
+    const { articles, isLoading, filter, errorMessage, error } = this.state;
     return (
       <>
         {isLoading ? (
