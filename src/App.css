@@ -24,3 +24,21 @@ button {
   cursor: pointer;
   width: 100%;
 }
+
+.in-article-image-container img {
+  max-height: 350px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
