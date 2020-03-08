@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-//import ArticleView from "./ArticleView";
+import Vote from "./Vote";
 
 const ArticleCard = props => {
   const {
@@ -13,9 +13,10 @@ const ArticleCard = props => {
     body,
     created_at
   } = props.article;
+  const { username } = props;
 
   return (
-    <>
+    <div className="container">
       <div className="card mb-4">
         <div className="card-header"> {topic}</div>
         <div className="card-body">
@@ -23,11 +24,11 @@ const ArticleCard = props => {
           <p className="card-text">{body}</p>
           <p className="badge badge-primary">comments: {comment_count}</p>
 
-          <p className="card-text">
-            <span className="btn-sm btn-success m-1">ADD</span>
-            Votes: {votes}
-            <span className="btn-sm btn-danger m-1">MINUS</span>
-          </p>
+          <div>
+            {username !== author && (
+              <Vote votes={votes} id={article_id} target={"articles"} />
+            )}
+          </div>
 
           <Link to={`/articles/${article_id}`}>Read Article →</Link>
         </div>
@@ -36,7 +37,7 @@ const ArticleCard = props => {
           <Link to={`/users/${author}`}>{author}</Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

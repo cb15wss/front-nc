@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { getArticle } from "../api";
-//import ArticleCard from "./ArticleCard";
 import { Link } from "@reach/router";
 
 import CommentList from "./CommentList";
-
-//console.log("get article", getArticle);
 
 class ArticleView extends Component {
   state = { article: {}, isLoading: true, comments: [] };
@@ -13,12 +10,6 @@ class ArticleView extends Component {
   componentDidMount() {
     this.fetchArticleWithComments();
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.article_id !== this.props.article_id) {
-  //     this.fetchArticleWithComments();
-  //   }
-  // }
 
   render() {
     const {
@@ -36,8 +27,6 @@ class ArticleView extends Component {
     }
     return (
       <div className="container">
-        <h1>Article ID:{article_id} </h1>
-
         <div className="card mb-4">
           <div className="card-header">
             {" "}
@@ -51,9 +40,8 @@ class ArticleView extends Component {
             <p className="card-text">{body}</p>
           </div>
           <div className="card-footer text-muted"></div>
+          <CommentList article_id={article_id} username={this.props.username} />
         </div>
-
-        <CommentList article_id={article_id} username={this.props.username} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import Vote from "./Vote";
 
 const CommentCard = ({ comment, index, username, removeComment }) => {
   // console.log(username);
@@ -17,11 +18,7 @@ const CommentCard = ({ comment, index, username, removeComment }) => {
           </div>
           <div className="card-footer text-muted">
             {username !== author && (
-              <p className="card-text">
-                <span className="btn-sm btn-success m-1">ADD</span>
-                Votes: {votes}
-                <span className="btn-sm btn-danger m-1">MINUS</span>
-              </p>
+              <Vote votes={votes} id={comment_id} target={"comments"} />
             )}
 
             {username === author && (

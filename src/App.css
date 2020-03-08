@@ -1,12 +1,12 @@
 .App {
   text-align: left;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .container {
-  margin-top: 30px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .title {
@@ -14,7 +14,7 @@
   font-size: 18px;
 }
 
-button {
+/*button {
   border: none;
   outline: 0;
   display: inline-block;
@@ -24,22 +24,12 @@ button {
   cursor: pointer;
   width: 100%;
 }
+*/
 
-.in-article-image-container img {
-  max-height: 350px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-img {
-  max-width: 100%;
-  vertical-align: middle;
-  border-style: none;
-}
-
-.btn {
-  margin-left: 30px;
+li,
+ul {
+  list-style: none;
+  list-style-position: inside;
+  padding: 0;
+  margin: 0px;
 }

@@ -10,7 +10,7 @@ class SubmitComment extends Component {
     const { body, viewForm } = this.state;
     return (
       <div className="container">
-        <button className="btn btn-primary" onClick={this.toggleViewForm}>
+        <button onClick={this.toggleViewForm}>
           Post Your Comment as {this.props.username}
         </button>
         {viewForm && (

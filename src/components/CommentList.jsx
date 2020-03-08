@@ -26,12 +26,13 @@ class CommentList extends Component {
     const { article_id, username } = this.props;
 
     return (
-      <>
+      <div className="container">
         <SubmitComment
           pushComment={this.pushComment}
           article_id={article_id}
           username={username}
         />
+
         <h3>Comments</h3>
 
         <ul>
@@ -47,7 +48,7 @@ class CommentList extends Component {
             );
           })}
         </ul>
-      </>
+      </div>
     );
   }
   pushComment = commentToSubmit => {

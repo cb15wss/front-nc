@@ -47,3 +47,10 @@ export const deleteById = async (id, target) => {
   const { status } = await apiRequest.delete(`/${target}/${id}`);
   return status;
 };
+
+export const patchVote = async (target, id, vote) => {
+  const { status } = await apiRequest.patch(`/${target}/${id}`, {
+    inc_votes: vote
+  });
+  return status;
+};

@@ -49,20 +49,17 @@ class ArticlesList extends Component {
     //  console.log("topic in articles list", this.props.topic);
   }
   render() {
+    //console.log("article list props", this.props);
     const { articles, isLoading, filter, errorMessage, error } = this.state;
     return (
-      <>
+      <div className="container">
         {isLoading ? (
           <Loading />
         ) : error ? (
           <ErrorPage err={errorMessage} />
         ) : (
-          <div className="container">
+          <>
             <div>
-              <p>
-                <span>{`${filter || "All "}`}</span>
-                Articles
-              </p>
               <select
                 onChange={({ target: { value } }) =>
                   this.setState({ sort_by: value })
@@ -74,14 +71,19 @@ class ArticlesList extends Component {
               </select>
             </div>
             <br />
+
             <ul>
               {articles.map(article => {
                 return (
-                  <ArticleCard article={article} key={article.article_id} />
+                  <ArticleCard
+                    article={article}
+                    key={article.article_id}
+                    username={this.props.username}
+                  />
                 );
               })}
             </ul>
-          </div>
+          </>
         )}
         <Router>
           <ArticleView path=":article_id" />
@@ -93,7 +95,7 @@ class ArticlesList extends Component {
           />
           <UsersList path="/users" setFilter={this.setFilter} filter={filter} />
         </Router>
-      </>
+      </div>
     );
   }
   setFilter = filter => {

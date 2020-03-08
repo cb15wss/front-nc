@@ -19,12 +19,12 @@ class App extends React.Component {
   render() {
     const { username } = this.state;
     return (
-      <main className="container">
+      <div className="container">
         <Header username={username} />
         <NavBar />
         <Router>
           <Home path="/" />
-          <ArticlesList path="/articles" />
+          <ArticlesList path="/articles" username={username} />
           <ArticleView path="/articles/:article_id" username={username} />
           <ArticlesList path="/articles/topic/:topic" />
           <TopicsList path="/topics" />
@@ -32,7 +32,7 @@ class App extends React.Component {
 
           <ErrorPage default />
         </Router>
-      </main>
+      </div>
     );
   }
 }
