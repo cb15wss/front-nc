@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const Header = props => {
-  console.log(props);
+  //console.log(props);
   return (
     <div className="container">
       <h1>
@@ -10,7 +10,9 @@ const Header = props => {
           <h1>Tina Times</h1>
         </Link>
       </h1>
-      <p className="Header"> You are logged in as: '{props.username}'</p>
+      <p className="Header" align="right">
+        You are logged in as: '{props.username}'
+      </p>
     </div>
   );
 };

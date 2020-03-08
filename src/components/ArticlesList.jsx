@@ -43,13 +43,10 @@ class ArticlesList extends Component {
     const diffFilter = filter !== prevState.filter;
     const diffSort_by = sort_by !== prevState.sort_by;
     if (diffTopic || diffFilter || diffSort_by) {
-      this.fetchArticles();
+      this.fetchArticles(sort_by, filter);
     }
-
-    //  console.log("topic in articles list", this.props.topic);
   }
   render() {
-    //console.log("article list props", this.props);
     const { articles, isLoading, filter, errorMessage, error } = this.state;
     return (
       <div className="container">

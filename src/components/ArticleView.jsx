@@ -1,35 +1,42 @@
 import React, { Component } from "react";
 import { getArticle } from "../api";
 import { Link } from "@reach/router";
-
 import CommentList from "./CommentList";
+import Loading from "./Loading";
+import ErrorPage from "./ErrorPage";
 
 class ArticleView extends Component {
-  state = { article: {}, isLoading: true, comments: [] };
+  state = {
+    article: {},
+    isLoading: true,
+    comments: [],
+    notFound: false
+  };
 
   componentDidMount() {
-    this.fetchArticleWithComments();
+    this.fetchArticles();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.article_id !== this.props.article_id) {
+      this.fetchArticles();
+    }
   }
 
   render() {
     const {
-      title,
-      body,
-      topic,
-      author,
-      comment_count,
-      votes,
-      created_at
-    } = this.state.article;
-    const { article_id } = this.props;
-    {
-      //console.log("article view props", this.props);
-    }
+      article: { title, body, topic, author, created_at, article_id },
+      notFound,
+      isLoading,
+      error
+    } = this.state;
+
+    if (isLoading) return <Loading />;
+    if (notFound) return <ErrorPage />;
     return (
       <div className="container">
         <div className="card mb-4">
           <div className="card-header">
-            {" "}
             Topic: {topic} <br />
             Posted on {created_at} by:
             <Link to={`/users/${author}`}>{author}</Link>
@@ -46,26 +53,18 @@ class ArticleView extends Component {
     );
   }
 
-  fetchArticleWithComments = () => {
+  fetchArticles = () => {
     const { article_id } = this.props;
     // console.log(article_id, "Article view");
     getArticle(article_id)
       .then(article => {
-        // console.log("article in fetch article", article);
-        this.setState({ article, isLoading: false });
+        //console.log("article in fetch article", article);
+        this.setState({ article, isLoading: false, notFound: false });
       })
       .catch(err => {
-        console.dir(err);
+        this.setState({ isLoading: false, notFound: true });
       });
   };
 }
 
 export default ArticleView;
-
-/*   <SubmitComment
-            article_id={article_id}
-            username={this.props.username}
-
-               <Link to={`/articles/${article_id}/comments`}>Add Comment</Link>
-        </div>
-          />*/
