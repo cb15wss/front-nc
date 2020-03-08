@@ -58,10 +58,10 @@ class ArticlesList extends Component {
           <ErrorPage err={errorMessage} />
         ) : (
           <div className="container">
-            <h2>Articles</h2>
-            <div id="sidebar-title">
-              <p id="filtered-by-text">
-                <span id="category-text">{`${filter || "All"}`}</span> Articles
+            <div>
+              <p>
+                <span>{`${filter || "All "}`}</span>
+                Articles
               </p>
               <select
                 onChange={({ target: { value } }) =>
@@ -73,6 +73,7 @@ class ArticlesList extends Component {
                 <option>comment_count</option>
               </select>
             </div>
+            <br />
             <ul>
               {articles.map(article => {
                 return (
@@ -95,8 +96,8 @@ class ArticlesList extends Component {
       </>
     );
   }
-  setFilter = (category, filter) => {
-    this.setState({ category, filter, isLoading: true });
+  setFilter = filter => {
+    this.setState({ filter, isLoading: true });
   };
 }
 

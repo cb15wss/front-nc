@@ -13,7 +13,7 @@ const ArticleCard = props => {
     body,
     created_at
   } = props.article;
-  console.log(article_id);
+
   return (
     <>
       <div className="card mb-4">
@@ -21,8 +21,13 @@ const ArticleCard = props => {
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
           <p className="card-text">{body}</p>
-          <p className="card-text">comments: {comment_count}</p>
-          <p className="card-text">Votes: {votes}</p>
+          <p className="badge badge-primary">comments: {comment_count}</p>
+
+          <p className="card-text">
+            <span className="btn-sm btn-success m-1">ADD</span>
+            Votes: {votes}
+            <span className="btn-sm btn-danger m-1">MINUS</span>
+          </p>
 
           <Link to={`/articles/${article_id}`}>Read Article →</Link>
         </div>

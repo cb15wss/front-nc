@@ -42,3 +42,8 @@ export const insertComment = async (article_id, comment) => {
   );
   return data.comment;
 };
+
+export const deleteById = async (id, target) => {
+  const { status } = await apiRequest.delete(`/${target}/${id}`);
+  return status;
+};

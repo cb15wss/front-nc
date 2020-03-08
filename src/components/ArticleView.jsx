@@ -32,7 +32,7 @@ class ArticleView extends Component {
     } = this.state.article;
     const { article_id } = this.props;
     {
-      console.log("article view props", this.props);
+      //console.log("article view props", this.props);
     }
     return (
       <div className="container">
@@ -50,13 +50,9 @@ class ArticleView extends Component {
             <h2 className="card-title">{title}</h2>
             <p className="card-text">{body}</p>
           </div>
-          <div className="card-footer text-muted">
-            Votes: {votes}
-            <br />
-            Comments: {comment_count}
-          </div>
+          <div className="card-footer text-muted"></div>
         </div>
-        <Link to={`/articles/${article_id}/comments`}>Add Comment</Link>
+
         <CommentList article_id={article_id} username={this.props.username} />
       </div>
     );
@@ -64,7 +60,7 @@ class ArticleView extends Component {
 
   fetchArticleWithComments = () => {
     const { article_id } = this.props;
-    console.log(article_id, "Article view");
+    // console.log(article_id, "Article view");
     getArticle(article_id)
       .then(article => {
         // console.log("article in fetch article", article);
