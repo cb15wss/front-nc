@@ -27,8 +27,7 @@ class ArticleView extends Component {
     const {
       article: { title, body, topic, author, created_at, article_id },
       notFound,
-      isLoading,
-      error
+      isLoading
     } = this.state;
 
     if (isLoading) return <Loading />;
@@ -55,10 +54,8 @@ class ArticleView extends Component {
 
   fetchArticles = () => {
     const { article_id } = this.props;
-    // console.log(article_id, "Article view");
     getArticle(article_id)
       .then(article => {
-        //console.log("article in fetch article", article);
         this.setState({ article, isLoading: false, notFound: false });
       })
       .catch(err => {

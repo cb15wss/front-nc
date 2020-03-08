@@ -14,7 +14,9 @@ const TopicCard = props => {
             return (
               <li key={topic.slug} className="list-group-item">
                 <h3>{topic.slug}</h3> <p>Desciption: {topic.description}</p>
-                <Link to={`/articles/topic/${topic.slug}`}>Articles →</Link>
+                <Link to={`/articles/topic/${topic.slug}`}>
+                  View Articles →
+                </Link>
               </li>
             );
           })}

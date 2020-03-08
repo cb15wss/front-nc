@@ -14,22 +14,17 @@ class TopicsList extends Component {
   }
 
   render() {
-    //console.log("topic in topics list", this.props);
     const { topics, isLoading } = this.state;
-    //console.log(topics);
     if (isLoading) return <Loading />;
     return (
-      <>
-        <div className="container">
-          <TopicCard topics={topics} />
-        </div>
-      </>
+      <div className="container">
+        <TopicCard topics={topics} />
+      </div>
     );
   }
 
   fetchTopics = () => {
     Api.getTopics().then(topics => {
-      //console.log("fetch topics", topics);
       this.setState({ topics, isLoading: false });
     });
   };

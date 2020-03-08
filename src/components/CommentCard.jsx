@@ -12,7 +12,6 @@ const CommentCard = ({ comment, index, username, removeComment }) => {
           <div className="card-body"></div>
           <p className="card-text">{body}</p>
           <div className="card-header">
-            {" "}
             Posted on {created_at} <br /> by:
             <Link to={`/users/${author}`}>{author}</Link>
           </div>

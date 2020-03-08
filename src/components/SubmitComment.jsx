@@ -3,27 +3,28 @@ import { insertComment } from "../api";
 
 class SubmitComment extends Component {
   state = { title: "", body: "", viewForm: false };
-
   render() {
-    // console.log("submit comment username", this.props.username);
-
     const { body, viewForm } = this.state;
     return (
       <div className="container">
-        <button onClick={this.toggleViewForm}>
+        <button className="btn btn-warning" onClick={this.toggleViewForm}>
           Post Your Comment as {this.props.username}
         </button>
         {viewForm && (
           <form onSubmit={this.SubmitComment}>
-            <textarea
-              type="text"
-              name="body"
-              onChange={this.handleChange}
-              value={body}
-              id="submit-comment-field"
-              placeholder="Add Your Comment"
-            />
-            <button id="submit-comment-button" type="submit">
+            <div className="form-group">
+              <label htmlFor="body">Add your Message below: </label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="body"
+                name="body"
+                onChange={this.handleChange}
+                value={body}
+                placeholder="Message Body"
+              ></textarea>
+            </div>
+            <button className="btn btn-primary" m-2 type="submit">
               Submit
             </button>
           </form>
@@ -62,3 +63,14 @@ class SubmitComment extends Component {
 }
 
 export default SubmitComment;
+
+/*
+<textarea
+                type="text"
+                name="body"
+                onChange={this.handleChange}
+                value={body}
+                id="submit-comment-field"
+                placeholder="Add Your Comment"
+              />
+              */

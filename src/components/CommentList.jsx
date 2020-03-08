@@ -1,6 +1,4 @@
 import { getArticleComments, deleteById } from "../api";
-import { Link } from "@reach/router";
-
 import React, { Component } from "react";
 import CommentCard from "./CommentCard";
 import SubmitComment from "./SubmitComment";
@@ -21,7 +19,6 @@ class CommentList extends Component {
   }
 
   render() {
-    // console.log("comment list", this.props);
     const { comments } = this.state;
     const { article_id, username } = this.props;
 

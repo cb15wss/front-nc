@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
 import { getUsers } from "../api";
-
 import UserCard from "./UserCard";
+import Loading from "./Loading";
 
 class UsersList extends Component {
   state = {
@@ -15,10 +14,11 @@ class UsersList extends Component {
   }
   render() {
     const { users, isLoading } = this.state;
+    if (isLoading) return <Loading />;
     return (
       <>
         <div className="container">
-          <h1>Users</h1>
+          <h2>All Users</h2>
           <ul>
             {users.map(user => {
               return <UserCard user={user} key={user.username} />;

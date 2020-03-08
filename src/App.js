@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
@@ -37,5 +37,3 @@ class App extends React.Component {
   }
 }
 export default App;
-
-/*<ArticlesList path="/articles/topics/:topic" />*/
